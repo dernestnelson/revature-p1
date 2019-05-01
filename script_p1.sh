@@ -16,7 +16,7 @@ if [ -z $vmCheck ]; then
 echo making VM
 az vm create -g $rg -n $vm_name --custom-data './cloud_config.txt' --image UbuntuLTS --size Standard_B1s 
 az vm disk attach -g $rg -n $disk --vm-name $vm_name
-az vm open-port -g $rg -n $vm_name --port 8000
+az vm open-port -g $rg -n $vm_name --port 8080
 fi
 
 
@@ -34,8 +34,8 @@ image(){
     ##sudo waagent -deprovision+user
     
     az vm disk detach -g $rg -n $disk --vm-name $vm_name
-    az vm stop -g $rg -n $vm_name --no-wait
-    az vm deallocate -g $rg -n $vm_name --no-wait
+    ##az vm stop -g $rg -n $vm_name 
+    az vm deallocate -g $rg -n $vm_name 
     az vm generalize -g $rg -n $vm_name
     az image create -n $imagename --source $vm_name -g $rg
     az vm create -n $newVM -g $rg --image $imagename 
