@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node /home/site/repository/revature-p1/index.js\","
+    "start": "npm install & node index.js"
   },
   "repository": {
     "type": "git",
