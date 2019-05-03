@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node /home/site/repository/index.js",
+    "start": "npm init && node /home/site/repository/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
