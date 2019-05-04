@@ -23,8 +23,8 @@
     "tedious": "^6.1.1"
   },
   "engines" : { 
-	"node" : ">=8.9.0",
-	"npm" : "~5.5.1" 	
+	"node" : ">=10.14.1",
+	"npm" : "~6.4.1" 	
   },
   "repository": {
     "type": "git",
