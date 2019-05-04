@@ -3,9 +3,9 @@
 rg=$1
 
 gitrepo='https://github.com/dernestnelson/revature-p1'
-token='8531c97bb0042fb81a75c68de53cb698f2815334'
-webappname=dumbwebsitename
-plan=sorrymatt
+token='c68442dfb12716c13c6b91539c24d8fc111fb825'
+webappname=dumbwebsitename2
+plan=sorrymatt1
 
 # Create a resource group.
 az group create --location southcentralus --name $rg
