@@ -3,9 +3,9 @@
 rg=$1
 
 gitrepo='https://github.com/dernestnelson/revature-p1'
-token='511ce07c327ecf9fd1798b28f805e8c6a9af588b'
-webappname=davidrulz9g
-plan=fuckmatt
+token='8531c97bb0042fb81a75c68de53cb698f2815334'
+webappname=dumbwebsitename
+plan=sorrymatt
 
 # Create a resource group.
 az group create --location southcentralus --name $rg
@@ -21,7 +21,7 @@ az webapp create --name $webappname --resource-group $rg --plan $plan
 # Configure continuous deployment from GitHub.
 # --git-token parameter is required only once per Azure account (Azure remembers token).
 az webapp deployment source config --name $webappname --resource-group $rg \
---repo-url $gitrepo --branch master 
+--repo-url $gitrepo --branch master --git-token $token
 
 
 # Copy the result of the following command into a browser to see the web app.
