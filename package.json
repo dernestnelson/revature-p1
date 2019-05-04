@@ -1,37 +1,17 @@
 {
-  "name": "revature-p1",
+  "name": "project1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.4",
+  },
+  "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@azure/cosmos": "^2.1.5",
-    "express": "^4.16.4",
-    "express-fileupload": "^1.1.4",
-    "git": "^0.1.5",
-    "i": "^0.3.6",
-    "node": "^12.1.0",
-    "pg": "^7.10.0",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^5.8.2",
-    "tedious": "^6.1.1"
-  },
-  "engines" : { 
-	"node" : ">=10.14.1",
-	"npm" : "~6.4.1" 	
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dernestnelson/revature-p1.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dernestnelson/revature-p1/issues"
-  },
-  "homepage": "https://github.com/dernestnelson/revature-p1#readme"
+  "license": "ISC"
 }
