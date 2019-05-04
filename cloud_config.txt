@@ -9,32 +9,76 @@ packages:
     - npm
 write_files:
     -   owners: 'david:david'
+        path: '/home/david/fileUpload.html'
+        content: |
+            <html>
+            <body>
+            <form ref='uploadForm' 
+                id='uploadForm' 
+                action='http://localhost:8000/upload' 
+                method='post' 
+                encType="multipart/form-data">
+            <input type="file" name="sampleFile" />
+            <input type='submit' value='Upload!' />
+            </form> 
+            <div id=images>
+        
+            </div>
+
+            </body>
+            </html>
+
+        
+    -   owners: 'david:david'
         path: '/home/david/index.js'
         content: |
-            
-            const http = require('http');
+            const express = require('express');
+            const fileUpload = require('express-fileupload');
+            const app = express();
+            const path = require('path');
 
+            const PORT = 8000;
             const hostname = '0.0.0.0';
-            const port = 8080;
 
-            const server = http.createServer((req, res) => {
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'text/html');
-                res.end('<h1>Hello David</h1>');
+            app.use(fileUpload());
+
+            app.get('/', function(req, res) {
+                res.sendFile(path.join(__dirname + '/fileUpload.html'));
             });
 
-            server.listen(port, hostname, () => {
-                console.log(`Server running at http://${hostname}:${port}/`);
+            app.post('/upload', function(req, res) {
+                let sampleFile;
+                let uploadPath;
+
+                if (Object.keys(req.files).length == 0) {
+                    res.status(400).send('No files were uploaded.');
+                    return;
+                }
+
+                console.log('req.files >>>', req.files); // eslint-disable-line
+
+                sampleFile = req.files.sampleFile;
+
+                uploadPath = __dirname + '/uploads/' +  sampleFile.name;
+
+                sampleFile.mv(uploadPath, function() {
+                    res.send(uploadPath);
+                });
             });
 
+            app.listen(PORT, hostname, () => {
+                console.log(`Server running at http://${hostname}:${PORT}/`); // eslint-disable-line
+            });
+
+       
 runcmd:
-    - cd '/home/david/'
     - sudo mkfs -t ext4 /dev/sdc
     - sudo mkdir /media/diskholder
     - sudo mount /dev/sdc /media/diskholder
     - sudo mv index.js /media/diskholder/
-    - sudo npm init -y
-    - sudo npm install express
-    - sudo mv package.json /media/diskholder/
+    - sudo mv fileUpload.html /media/diskholder/
     - cd '/media/diskholder'
+    - sudo npm init -y
+    - sudo npm install --save express
+    - sudo npm install --save express-fileupload
     - node index.js

@@ -1,12 +1,17 @@
 <html>
-  <body>
+<body>
     <form ref='uploadForm' 
-      id='uploadForm' 
-      action='http://localhost:8000/upload' 
-      method='post' 
-      encType="multipart/form-data">
-        <input type="file" name="sampleFile" />
-        <input type='submit' value='Upload!' />
-    </form>     
-  </body>
+        id='uploadForm' 
+        action='http://localhost:8000/upload' 
+        method='post' 
+        encType="multipart/form-data">
+          <input type="file" name="sampleFile" />
+          <input type='submit' value='Upload!' />
+    </form> 
+    <div id='images'>
+        
+    </div>
+    <script src="./client.js"></script>
+
+</body>
 </html>
