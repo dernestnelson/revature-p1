@@ -17,11 +17,14 @@
     "git": "^0.1.5",
     "i": "^0.3.6",
     "node": "^12.1.0",
-    "node-bin-setup": "^1.0.6",
     "pg": "^7.10.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^5.8.2",
     "tedious": "^6.1.1"
+  },
+  "engines" : { 
+	"node" : ">=6.9.3",
+	"npm" : "~2.15.9" 	
   },
   "repository": {
     "type": "git",
