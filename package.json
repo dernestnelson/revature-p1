@@ -1,5 +1,5 @@
 {
-  "name": "project1",
+  "name": "revature-p1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
+    "start": "npm install & node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -20,27 +20,24 @@ az vm open-port -g $rg -n $vm_name --port 8000
 fi
 
 
-snapshot(){
-    snapshotname=$1
-    newdisk=$2
-    az vm disk detach -g $rg -n $disk --vm-name $vm_name
-    az snapshot create -n $snapshotname -g $rg --source $disk 
-    az disk create -g $rg -n $newdisk --source $snapshotname
-}
-
-image(){
-    imagename=$1
-    newVM=$2
-    MyVmss=$3
-    ##sudo waagent -deprovision+user
+    snapshotname=$4
     
     az vm disk detach -g $rg -n $disk --vm-name $vm_name
+    az snapshot create -n $snapshotname -g $rg --source $disk 
+    az disk create -g $rg -n newdisk1 --source $snapshotname
+    az disk create -g $rg -n newdisk2 --source $snapshotname
+    az disk create -g $rg -n newdisk2 --source $snapshotname
+
+    imagename=$5
+    MyVmss=$6
+    ##sudo waagent -deprovision+user
+    
     az vm stop -g $rg -n $vm_name 
     az vm deallocate -g $rg -n $vm_name 
     az vm generalize -g $rg -n $vm_name
     az image create -n $imagename --source $vm_name -g $rg
     az vmss create -n $MyVmss -g $rg --instance-count 3 --image $imagename
-}
+
 
 command=$4
 if [ $command != 'snapshot' ] && [ $command != 'image' ]; then

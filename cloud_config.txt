@@ -15,7 +15,7 @@ write_files:
             <body>
             <form ref='uploadForm' 
                 id='uploadForm' 
-                action='http://localhost:8000/upload' 
+                action='http://0.0.0.0:8000/upload' 
                 method='post' 
                 encType="multipart/form-data">
             <input type="file" name="sampleFile" />
@@ -55,7 +55,7 @@ write_files:
                     return;
                 }
 
-                console.log('req.files >>>', req.files); // eslint-disable-line
+                console.log('req.files >>>', req.files); 
 
                 sampleFile = req.files.sampleFile;
 
@@ -67,17 +67,12 @@ write_files:
             });
 
             app.listen(PORT, hostname, () => {
-                console.log(`Server running at http://${hostname}:${PORT}/`); // eslint-disable-line
+                console.log(`Server running at http://${hostname}:${PORT}/`);
             });
 
        
 runcmd:
-    - sudo mkfs -t ext4 /dev/sdc
-    - sudo mkdir /media/diskholder
-    - sudo mount /dev/sdc /media/diskholder
-    - sudo mv index.js /media/diskholder/
-    - sudo mv fileUpload.html /media/diskholder/
-    - cd '/media/diskholder'
+    - cd '/home/david'
     - sudo npm init -y
     - sudo npm install --save express
     - sudo npm install --save express-fileupload

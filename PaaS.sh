@@ -1,28 +1,25 @@
 #!/bin/bash
 
-rg=$1
-
-gitrepo='https://github.com/dernestnelson/revature-p1'
-token='c68442dfb12716c13c6b91539c24d8fc111fb825'
-webappname=dumbwebsitename2
-plan=sorrymatt1
+groupName=$1
+location=southcentralus
+servicePlanName=$2
+appName=$3
+gitrepo=https://github.com/dernestnelson/test
+token=5cb9f16a1a731dcd756e393efb15a7686999f255
 
 # Create a resource group.
-az group create --location southcentralus --name $rg
+az group create --location $location --name $groupName
 
 # Create an App Service plan in `FREE` tier.
-az appservice plan create --name $plan --resource-group $rg --sku B1 --number-of-workers 3 -l southcentralus
+az appservice plan create --name $servicePlanName --resource-group $groupName --sku B1 --location $location --is-linux
 
 # Create a web app.
-az webapp create --name $webappname --resource-group $rg --plan $plan
+az webapp create --resource-group $groupName --plan $servicePlanName --name $appName -r "node|10.14"
 
-
-#az webapp config appsettings set --resource-group $rg --name $webappname --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
-# Configure continuous deployment from GitHub.
+# Configure continuous deployment from GitHub. 
 # --git-token parameter is required only once per Azure account (Azure remembers token).
-az webapp deployment source config --name $webappname --resource-group $rg \
+az webapp deployment source config --name $appName --resource-group $groupName \
 --repo-url $gitrepo --branch master --git-token $token
 
-
-# Copy the result of the following command into a browser to see the web app.
-echo http://$webappname.azurewebsites.net
+# add instances 
+az appservice plan update -g $groupName -n $servicePlanName --number-of-workers 3
