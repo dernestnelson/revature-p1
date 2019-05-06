@@ -2,49 +2,51 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
 const path = require('path');
+// const bodyparser = require('body-parser');
+// const multer = require('multer');
+// const upload = multer({ dest: './upload/'});
+// const fs = require('fs');
+// let directorypath = path.join(__dirname, '/upload/');
+// const cosmos = require('@azure/cosmos').CosmosClient;
 
 const port = 8080;
 const hostname = '0.0.0.0';
-<<<<<<< HEAD
+
 
 /////////////////////
-// const Sequelize = require('sequelize');
-=======
->>>>>>> ece4a7dc74f891d160588c00e2f75cb9f60f3dae
+// async function run() {
+//   // 1.
+//   console.log("\n1. Create database, if it doesn't already exist '" + databaseId + "'");
+//   await client.databases.createIfNotExists({ id: databaseId });
+//   console.log("Database with id " + databaseId + " created.");
 
-// // Option 1: Passing parameters separately
-// const sequelize = new Sequelize('database', 'sqladmin', 'Password123', {
-//   host: '0.0.0.0',
-//   dialect: 'mysql'
-// });
+// console.log("1. create container with id '" + containerId + "'");
+//   await database.containers.createIfNotExists({ id: containerId });
 
-// var mysql = require('mysql')
-// var connection = mysql.createConnection({
-//   host: '0.0.0.0',
-//   user: 'sqladmin',
-//   password: 'Password123',
-//   database: 'mydb'
-// })
+// console.log("\n1. insert items in to database '" + databaseId + "' and container '" + containerId + "'");
+//   const itemDefs = getItemDefinitions();
+//   const p = [];
+//   for (const itemDef of itemDefs) {
+//     p.push(container.items.create(itemDef));
+//   }
+//   await Promise.all(p);
+//   console.log(itemDefs.length + " items created");
 
-// connection.connect()
 
-// connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-//   if (err) throw err
 
-//   console.log('The solution is: ', rows[0].solution)
-// })
+// //  @param {cosmos.Database} database
 
-// connection.end()
+// async function useManualIndexing(database) {
+//   console.log("create container with indexingPolicy.automatic : false");
 
-// mysql
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//  });
-///////////////////////
+//   const containerId = "ManualIndexDemo";
+//   const indexingPolicySpec = { automatic: false };
+
+//   const { container } = await database.containers.create({
+//     id: containerId,
+//     indexingPolicy: indexingPolicySpec
+//   });
+
 
 // default options
 app.use(fileUpload());
@@ -77,8 +79,5 @@ app.post('/upload', function(req, res) {
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> ece4a7dc74f891d160588c00e2f75cb9f60f3dae
+
