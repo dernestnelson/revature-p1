@@ -8,14 +8,28 @@ packages:
     - nodejs
     - npm
 write_files:
+    -   owner: www-data:www-data
+    -   path: /etc/nginx/sites-available/default
+        content: |
+            server {
+                listen 80;
+                location / {
+                    proxy_pass http://localhost:8080;
+                    proxy_http_version 1.1;
+                    proxy_set_header Upgrade $http_upgrade;
+                    proxy_set_header Connection keep-alive;
+                    proxy_set_header Host $host;
+                    proxy_cache_bypass $http_upgrade;
+                }
+            }
     -   owners: 'david:david'
-        path: '/home/david/fileUpload.html'
+    -   path: '/home/david/fileUpload.html'
         content: |
             <html>
             <body>
             <form ref='uploadForm' 
                 id='uploadForm' 
-                action='http://0.0.0.0:8000/upload' 
+                action='http://localhost:8080/upload' 
                 method='post' 
                 encType="multipart/form-data">
             <input type="file" name="sampleFile" />
@@ -30,15 +44,14 @@ write_files:
 
         
     -   owners: 'david:david'
-        path: '/home/david/index.js'
+    -   path: '/home/david/index.js'
         content: |
             const express = require('express');
             const fileUpload = require('express-fileupload');
             const app = express();
             const path = require('path');
 
-            const PORT = 8000;
-            const hostname = '0.0.0.0';
+            const port = 8080;
 
             app.use(fileUpload());
 
@@ -66,12 +79,11 @@ write_files:
                 });
             });
 
-            app.listen(PORT, hostname, () => {
-                console.log(`Server running at http://${hostname}:${PORT}/`);
-            });
+            app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
        
 runcmd:
+    - service nginx restart
     - cd '/home/david'
     - sudo npm init -y
     - sudo npm install --save express
