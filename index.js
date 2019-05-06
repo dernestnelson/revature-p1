@@ -74,15 +74,15 @@ app.post('/upload', function(req, res) {
 });
 
 
-app.get('/images', (req, res) => {
-  fs.readdir(dirPath, (err, files) => {
-      if(err) {
-          res.send("hmmm")
-      } else {
-          res.json(files)
-      }
-  })
-})
+// app.get('/images', (req, res) => {
+//   fs.readdir(dirPath, (err, files) => {
+//       if(err) {
+//           res.send("hmmm")
+//       } else {
+//           res.json(files)
+//       }
+//   })
+// })
 
 
 // const {
