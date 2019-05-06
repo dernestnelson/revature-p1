@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 
 const port = 8080;
-const hostname = 0.0.0.0;
+const hostname = '0.0.0.0';
 
 
 // default options
