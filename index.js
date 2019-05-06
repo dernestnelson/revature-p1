@@ -3,8 +3,8 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const path = require('path');
 
-const port = 8000;
-
+const port = 8080;
+const hostname = 0.0.0.0;
 
 
 // default options
@@ -35,6 +35,5 @@ app.post('/upload', function(req, res) {
 });
 
 
-app.listen(port, () => {
-  app.listen(port, () => console.log(`Example app listening on port ${port}!`)) // eslint-disable-line
-});
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
