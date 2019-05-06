@@ -65,8 +65,8 @@ const {
 
 async function main() {
   // Enter your storage account name and shared key
-  const account = "cosmoandwanda";
-  const accountKey = "vmMZcyky6FVX5Kv9cPScn28WbvbTPGE9GEblY6cZT0VPaZiN9v6J7AIz5CcClSKaZftOIOjLpyRU9yNU2T6WwQ==";
+  const account = "cosmosstar";
+  const accountKey = "6wMXzDESrBpzMYk7stalTAHHYk4pHqZUS8ai4jmI6jf5SIawZ2BDZMGlmlxZ5WqKfYrUTHy4rp03ddBLDfi9wg==";
 
   // Use SharedKeyCredential with storage account and account key
   const sharedKeyCredential = new SharedKeyCredential(account, accountKey);
