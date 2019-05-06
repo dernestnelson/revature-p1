@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/upload', function(req, res) {
-  res.redirect('/');
+//res.redirect('/');
   let sampleFile;
   let uploadPath;
 
