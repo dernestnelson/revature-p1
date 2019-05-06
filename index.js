@@ -2,10 +2,10 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
 const path = require('path');
-const bodyparser = require('body-parser');
-const multer = require('multer');
-const upload = multer({ dest: './upload/'});
-const fs = require('fs');
+//const bodyparser = require('body-parser');
+//const multer = require('multer');
+//const upload = multer({ dest: './upload/'});
+//const fs = require('fs');
 let directorypath = path.join(__dirname, '/upload/');
 const cosmos = require('@azure/cosmos').CosmosClient;
 
