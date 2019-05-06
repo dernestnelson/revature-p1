@@ -1,9 +1,11 @@
 require('dotenv').config()
 const express = require('express')
+const multer  = require('multer')
 const cosmos = require('@azure/cosmos').CosmosClient;
 const app = express()
 const port = 8080
-const multer  = require('multer')
+
+
 const {
   Aborter,
   BlockBlobURL,
