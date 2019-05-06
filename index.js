@@ -5,9 +5,12 @@ const path = require('path');
 
 const port = 8080;
 const hostname = '0.0.0.0';
+<<<<<<< HEAD
 
 /////////////////////
 // const Sequelize = require('sequelize');
+=======
+>>>>>>> ece4a7dc74f891d160588c00e2f75cb9f60f3dae
 
 // // Option 1: Passing parameters separately
 // const sequelize = new Sequelize('database', 'sqladmin', 'Password123', {
@@ -51,6 +54,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/upload', function(req, res) {
+  res.redirect('/');
   let sampleFile;
   let uploadPath;
 
@@ -73,4 +77,8 @@ app.post('/upload', function(req, res) {
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> ece4a7dc74f891d160588c00e2f75cb9f60f3dae
