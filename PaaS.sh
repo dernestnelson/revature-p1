@@ -27,5 +27,5 @@ connectionString=$(az cosmosdb list-connection-strings --name $dbName --resource
 --query connectionStrings[0].connectionString --output tsv)
 
 # Assign the connection string to an App Setting in the Web App
-az webapp config appsettings set --name $dbName --resource-group $rg \
+az webapp config appsettings set --name $appName --resource-group $rg \
 --settings "GlobalDocumentDB_URL=$connectionString" 

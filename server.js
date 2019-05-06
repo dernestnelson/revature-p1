@@ -64,7 +64,7 @@ const nosql = new cosmos( {endpoint: process.env.AZURE_COSMOS_URI, auth: {
   masterKey: process.env.AZURE_COSMOS_PRIMARY_KEY
 }});
 
-nosql.database('nac').container('jh').items.readAll().toArrary().then(res => console.log(res.result))
+//nosql.database('nac').container('jh').items.readAll().toArrary().then(res => console.log(res.result))
 
 app.get('/images', (req, res) => {
 
